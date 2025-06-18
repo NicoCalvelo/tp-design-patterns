@@ -14,11 +14,20 @@ public class Main {
         Director director = new Director();
         director.triggerExplosion(builder);
 
-        // Construit la configuration
         ExplosionConfig config = builder.build();
 
-        Explosion explosion = new Explosion(config);
+        Explosion explosion = ExplosionFactory.createExplosion(config, "air");
         explosion.trigger();
+
+        builder.setPosition(100, 50);
+        builder.setLifetime(2);
+        builder.setSpread(10);
+        builder.setCount(5);
+        builder.setColor(java.awt.Color.BLUE);
+
+        ExplosionConfig config2 = builder.build();
+        Explosion explosion2 = ExplosionFactory.createExplosion(config2, "fire");
+        explosion2.trigger();
 
     }
 }

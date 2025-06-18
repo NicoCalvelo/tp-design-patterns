@@ -1,5 +1,7 @@
 package org.example.decorator;
 
+import org.example.interfaces.IParticleDecorator;
+
 public class FadeOutDecorator extends ParticleDecorator {
     public FadeOutDecorator(IParticleDecorator particle) {
         super(particle);

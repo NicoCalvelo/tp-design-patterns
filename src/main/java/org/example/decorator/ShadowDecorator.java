@@ -1,5 +1,7 @@
 package org.example.decorator;
 
+import org.example.interfaces.IParticleDecorator;
+
 public class ShadowDecorator extends ParticleDecorator {
     public ShadowDecorator(IParticleDecorator particle) {
         super(particle);

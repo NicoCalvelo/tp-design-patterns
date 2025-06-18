@@ -7,6 +7,12 @@ public class Particle implements IParticlePrototype, Cloneable {
     private int posY;
     private final ParticleFlyweight flyweight;
 
+    public Particle(int posX, int posY, ParticleFlyweight flyweight) {
+        this.posX = posX;
+        this.posY = posY;
+        this.flyweight = flyweight;
+    }
+
     public Particle(ParticleFlyweight flyweight) {
         this.flyweight = flyweight;
     }
@@ -21,13 +27,21 @@ public class Particle implements IParticlePrototype, Cloneable {
         }
     }
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
     // Méthode factice d'affichage
     public void render(int x, int y) {
         this.posX = x;
         this.posY = y;
         System.out.println(
             "Particule " + flyweight.getType() +
-            " rendue à la position (" + x + ", " + y + 
+            " rendue à la position (" + this.posX + ", " + this.posY +
             ") avec texture " + flyweight.getTexture() +
             " et shader " + flyweight.getShader()
         );
