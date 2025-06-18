@@ -2,19 +2,34 @@ package org.example.prototype;
 
 import org.example.interfaces.IParticlePrototype;
 
-public class Particle implements IParticlePrototype {
+public class Particle implements IParticlePrototype, Cloneable {
     private int posX;
     private int posY;
-    private ParticleFlyweight flyweight;
+    private final ParticleFlyweight flyweight;
 
-    public Particle(int posX, int posY, ParticleFlyweight flyweight) {
-        this.posX = posX;
-        this.posY = posY;
+    public Particle(ParticleFlyweight flyweight) {
         this.flyweight = flyweight;
     }
 
     @Override
-    public IParticlePrototype clone() {
-        return new Particle(this.posX, this.posY, this.flyweight);
+    public Particle clone() {
+        try {
+            return (Particle) super.clone();
+        } catch (CloneNotSupportedException e) {
+            // Fallback in case clone is not supported
+            return new Particle(this.flyweight);
+        }
+    }
+
+    // Méthode factice d'affichage
+    public void render(int x, int y) {
+        this.posX = x;
+        this.posY = y;
+        System.out.println(
+            "Particule " + flyweight.getType() +
+            " rendue à la position (" + x + ", " + y + 
+            ") avec texture " + flyweight.getTexture() +
+            " et shader " + flyweight.getShader()
+        );
     }
 }
