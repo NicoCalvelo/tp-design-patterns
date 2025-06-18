@@ -1,4 +1,6 @@
-package org.example.prototype;
+package org.example.singleton;
+
+import org.example.prototype.ParticleFlyweight;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +26,16 @@ public class ParticleFlyweightFactory {
 
     public ParticleFlyweight getFlyweight(String type) {
         if (!flyweights.containsKey(type)) {
+            System.out.println("Création d'un nouveau type de particule : " + type + " (délai de 500ms)");
+            try {
+                // Ajouter un délai de 500ms lors de la création initiale
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.err.println("Interruption pendant le délai de création : " + e.getMessage());
+            }
             flyweights.put(type, new ParticleFlyweight(type, type + "_texture.png", type + "_shader"));
         }
-        return flyweights.get(type);
+        return flyweights.get(type).clone();
     }
 }
