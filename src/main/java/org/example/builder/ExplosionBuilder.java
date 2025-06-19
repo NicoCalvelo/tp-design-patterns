@@ -1,10 +1,12 @@
 package org.example.builder;
 
 
+import org.example.interfaces.IBuilder;
+
 import java.awt.*;
 
 
-public class ExplosionBuilder implements Builder {
+public class ExplosionBuilder implements IBuilder {
     private int x;
     private int y;
     private Color color;
@@ -13,29 +15,34 @@ public class ExplosionBuilder implements Builder {
     private float lifetime;
 
     @Override
-    public void setPosition(int x, int y) {
+    public ExplosionBuilder setPosition(int x, int y) {
         this.x = x;
         this.y = y;
+        return this;
     }
 
     @Override
-    public void setColor(Color color) {
+    public ExplosionBuilder setColor(Color color) {
         this.color = color;
+        return this;
     }
 
     @Override
-    public void setCount(int n) {
+    public ExplosionBuilder setCount(int n) {
         this.count = n;
+        return this;
     }
 
     @Override
-    public void setSpread(float spread) {
+    public ExplosionBuilder setSpread(float spread) {
         this.spread = spread;
+        return this;
     }
 
     @Override
-    public void setLifetime(float lifetime) {
+    public ExplosionBuilder setLifetime(float lifetime) {
         this.lifetime = lifetime;
+        return this;
     }
 
     @Override

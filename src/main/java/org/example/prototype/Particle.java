@@ -22,7 +22,6 @@ public class Particle implements IParticlePrototype, Cloneable {
         try {
             return (Particle) super.clone();
         } catch (CloneNotSupportedException e) {
-            // Fallback in case clone is not supported
             return new Particle(this.flyweight);
         }
     }
@@ -35,7 +34,6 @@ public class Particle implements IParticlePrototype, Cloneable {
         return posY;
     }
 
-    // Méthode factice d'affichage
     public void render(int x, int y) {
         this.posX = x;
         this.posY = y;

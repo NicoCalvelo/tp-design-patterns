@@ -2,6 +2,7 @@ package org.example.proxy;
 
 import org.example.builder.Explosion;
 import org.example.builder.ExplosionConfig;
+import org.example.builder.ExplosionFactory;
 import org.example.interfaces.IExplosionFactory;
 
 import java.util.HashMap;
@@ -18,8 +19,7 @@ public class ExplosionCacheProxy implements IExplosionFactory {
             return cache.get(key);
         }
 
-        // Remplacer ceci par la vraie logique de création d'une Explosion
-        Explosion explosion = new Explosion(config, particleType);
+        Explosion explosion = ExplosionFactory.createExplosion(config, particleType);
 
         cache.put(key, explosion);
         return explosion;

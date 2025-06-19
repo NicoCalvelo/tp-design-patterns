@@ -9,10 +9,8 @@ public class ShadowDecorator extends ParticleDecorator {
 
     @Override
     public void render(int posX, int posY) {
-        // Render the base particle
         particle.render(posX, posY);
 
-        // Add Shadow effect
         System.out.println("Adding Shadow effect at position (" + posX + ", " + posY + ")");
     }
 }

@@ -9,10 +9,8 @@ public class FadeOutDecorator extends ParticleDecorator {
 
     @Override
     public void render(int posX, int posY) {
-        // Render the base particle
         particle.render(posX, posY);
 
-        // Add FadeOut effect
         System.out.println("Adding FadeOut effect at position (" + posX + ", " + posY + ")");
     }
 }

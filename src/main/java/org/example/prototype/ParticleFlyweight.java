@@ -30,7 +30,6 @@ public class ParticleFlyweight implements IParticleFlyweight, Cloneable {
         try {
             return (ParticleFlyweight) super.clone();
         } catch (CloneNotSupportedException e) {
-            // Fallback in case clone is not supported
             return new ParticleFlyweight(this.type, this.texture, this.shader);
         }
     }
