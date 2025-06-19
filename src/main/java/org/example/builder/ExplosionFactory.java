@@ -21,7 +21,8 @@ public class ExplosionFactory {
             // Position aléatoire autour du centre selon le spread
             int dx = (int) ((random.nextFloat() - 0.5f) * 2 * spread);
             int dy = (int) ((random.nextFloat() - 0.5f) * 2 * spread);
-            Particle p = new Particle(baseX + dx, baseY + dy, flyweight);
+            Particle p = new Particle(flyweight);
+            p.render(baseX + dx, baseY + dy);
             particles.add(p);
         }
         return new Explosion(config, particles);
